@@ -57,3 +57,19 @@ export default (content) => {
   Средний пробег: 30300
   Стоимость самой дорогой машины: 85000
 }
+
+
+import _ from 'lodash';
+
+export default function vvv(content) {
+  const split = content.split('\n');
+  const slice = split.slice(1, split.length - 1);
+  console.log(`Count: ${slice.length}`);
+  const map = slice.map((r) => r.split(','));
+  const namebarbersh = map.map((r) => r[0]);
+  console.log(`Barbershops: ${namebarbersh.sort().join(', ')}`);
+  const raitingbs = map.map((r) => r[4]);
+  const num = raitingbs.map((r) => Number(r));
+  console.log(`Ratings: Min: ${_.min(num)} Max: ${_.max(num)}`);
+}
+
